@@ -1,0 +1,36 @@
+<div class="signup-container">
+    <!-- Encabezado del formulario -->
+    <h1>Registrarse</h1>
+    
+    <!-- Formulario de registro -->
+    <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+      <!-- Campo de correo electrónico -->
+      <label>
+        Email:
+        <input type="text" formControlName="email">
+      </label>
+      
+      <!-- Campo de contraseña -->
+      <label>
+        Password:
+        <input type="password" id="password" formControlName="password" required>
+      </label>
+      
+      <!-- Contenedor para el botón de envío -->
+      <div class="submit-wrapper">
+        <!-- Botón de envío del formulario -->
+        <button [disabled]="isLoading || isSuccess" type="submit">
+          <!-- Texto del botón según el estado del formulario -->
+          <span *ngIf="!isLoading && !isSuccess">Enviar</span>
+          <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
+          <span *ngIf="isSuccess"><i class="fa fa-check"></i></span>
+        </button>
+        
+        <!-- Botón para ir a la página de inicio de sesión -->
+        <button *ngIf="showLoginButton" type="button" routerLink="/login" class="btn-style">Ir a Inicio de Sesión</button>
+
+      </div>
+    </form>
+  </div>
+  
+  
