@@ -36,22 +36,6 @@ export class UserService {
     return this.http.post<any>(this.baseUrl + "/create", JSON.stringify(data), { headers: headers });
   }
 
-  // Método para crear un nuevo evento
-  createEvent(data:any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post<any>(this.baseUrl + "/create_event", JSON.stringify(data), { headers: headers });
-  }
-
-  // Método para crear un nuevo ticket
-  createTicket(data:any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post<any>(this.baseUrl + "/Tickets_Create", JSON.stringify(data), { headers: headers });
-  }
-
   // Método para crear un nuevo usuario
   createUs(data:any): Observable<any> {
     const headers = new HttpHeaders({
@@ -84,35 +68,6 @@ export class UserService {
     return this.http.get<any>(url);
   }
 
-  // Método para obtener eventos
-  getEvents(): Observable<any[]> {
-    const url = `${this.baseUrl}/Events`;
-    return this.http.get<any[]>(url);
-  }
-
-  // Método para obtener eventos por categoría
-  getEventbyCate(categoria:string): Observable<any[]> {
-    const url = `${this.baseUrl}/Events_Category?categoria=${categoria}`;
-    return this.http.get<any[]>(url);
-  }
-
-  // Método para obtener tickets disponibles
-  getTicketAvalibity(disponible: string): Observable<any> {
-    const url = `${this.baseUrl}/Tickets_Avalibity?disponible=${disponible}`;
-    return this.http.get<any>(url);
-  }
-
-  // Método para obtener tickets de un evento
-  getTicketEvent(id_event: string): Observable<any> {
-    const url = `${this.baseUrl}/TicketsE?id_event=${id_event}`;
-    return this.http.get<any>(url);
-  }
-
-  // Método para obtener un ticket por su ID
-  getTicketID(_id: string): Observable<any> {
-    const url = `${this.baseUrl}/Tickets?_id=${_id}`;
-    return this.http.get<any>(url);
-  }
 
   // Método para obtener el carrito de un usuario
   getUserCart(userID: string): Observable<any> {
@@ -120,7 +75,7 @@ export class UserService {
     return this.http.get<any>(url);
   }
 
-  // Método para obtener los tickets de un usuario
+  // Método para obtener los juegos de un usuario, falta crear v:
   getTicket_user(userID: string): Observable<any> {
     const url = `${this.baseUrl}/Ticket_user?userID=${userID}`;
     return this.http.get<any>(url);
@@ -138,12 +93,6 @@ export class UserService {
     return this.http.put<any>(url, userData);
   }
 
-  // Método para obtener un evento por su ID
-  getEventID(id_event: string): Observable<any> {
-    const url = `${this.baseUrl}/EventsID?id_event=${id_event}`;
-    return this.http.get<any>(url);
-  }
-
   // Método para crear un nuevo carrito
   createCart(data:any): Observable<any> {
     const headers = new HttpHeaders({
@@ -158,17 +107,4 @@ export class UserService {
     return this.http.delete<any>(url);
   }
 
-  // Método para actualizar la disponibilidad de un ticket
-  updateTicketDis(data: any): Observable<any> {
-    const url = `${this.baseUrl}/Tickets_Ava`;
-    return this.http.put<any>(url, data);
-  }
-
-  // Método para crear un nuevo ticket de usuario
-  createuserTicketsave(data:any): Observable<any> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
-    return this.http.post<any>(this.baseUrl + "/createT_U", JSON.stringify(data), { headers: headers });
-  }
 }
