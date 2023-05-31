@@ -12,6 +12,7 @@ import { HadminComponent } from './paginas/hadmin/hadmin.component';
 import { CreateGamesComponent } from './paginas/create-games/create-games.component';
 import { UserGamesComponent } from './paginas/user-games/user-games.component';
 import { CarritoComponent } from './paginas/carrito/carrito.component';
+import { DisplayUserComponent } from './paginas/display-user/display-user.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CarritoComponent } from './paginas/carrito/carrito.component';
     HadminComponent,
     CreateGamesComponent,
     UserGamesComponent,
-    CarritoComponent
+    CarritoComponent,
+    DisplayUserComponent
   ],
   imports: [
     BrowserModule,

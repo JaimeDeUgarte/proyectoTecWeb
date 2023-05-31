@@ -1,0 +1,48 @@
+/* Estilos para la barra de navegación */
+nav {
+  background-color: #FFFF00; /* Amarillo */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-right: 10px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  color: #000000; /* Negro */
+  text-decoration: none;
+  background-color: #FFFF00; /* Amarillo */
+}
+
+nav a:hover {
+  background-color: #000000; /* Negro */
+  color: #FFFF00; /* Amarillo */
+}
+
+nav .active {
+  color: #FFFF00; /* Amarillo */
+}
+
+.content {
+  background-color: #111111; /* Gris oscuro casi negro */
+  position: fixed;
+  top: 0px; /* Ajusta la altura de acuerdo a tu barra de navegación */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 39px; /* Ajusta el margen superior según la altura de la barra de navegación */
+}
