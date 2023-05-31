@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly baseUrl = 'http://localhost:5000'; // URL base para las peticiones al servidor
+  private readonly baseUrl = 'http://localhost:3000'; // URL base para las peticiones al servidor
 
   constructor(private http: HttpClient) { }
 
