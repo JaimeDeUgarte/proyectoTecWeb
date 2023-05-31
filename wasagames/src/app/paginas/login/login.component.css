@@ -6,15 +6,19 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(37, 36, 36);
+  background-color: rgb(20, 20, 20);
 }
 
 .container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: gray;
+  background-color: rgb(20, 20, 20);
 }
 
 .login-container {
@@ -48,26 +52,64 @@ input {
 
 }
 
-button {
-  cursor: pointer;
-  font-size: 18px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  display: inline-block;
-  text-align: center;
-  font-weight: bold;
-  padding: 0.7em 2em;
-  border: 3px solid gold;
-  border-radius: 2px;
+.button {
+  --color: #00A97F;
+  background-color: transparent;
+  border-radius: .3em;
   position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
-  color: red;
-  text-decoration: none;
-  transition: 0.3s ease all;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: 400;
+  font-size: 17px;
+  padding: 0.7em 2em;
+  letter-spacing: 2px;
+  font-size: 18px;
+  border: 1px solid;
+  font-family: inherit;
+  text-transform: uppercase;
+  color: rgb(240, 217, 10); /* Cambio de color de texto a amarillo */
   z-index: 1;
-  background-color: black;
-  width: 100%;
 }
+
+.button::before,
+.button::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: rgb(240, 217, 10); /* Cambio de color de fondo a amarillo */
+  transition: 1s ease;
+}
+
+.button::before {
+  top: -1em;
+  left: -1em;
+}
+
+.button::after {
+  left: calc(100% + 1em);
+  top: calc(100% + 1em);
+}
+
+.button:hover::before,
+.button:hover::after {
+  height: 410px;
+  width: 410px;
+}
+
+.button:hover {
+  color: black; /* Cambio de color de texto a negro */
+}
+
+.button:active {
+  filter: brightness(.8);
+}
+
 
 .register-button {
   cursor: pointer;
