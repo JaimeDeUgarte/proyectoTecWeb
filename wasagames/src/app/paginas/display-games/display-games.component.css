@@ -33,9 +33,12 @@
   height: 100%;
   object-fit: cover;
 }
+
 .game-info {
   color: #FFD700; /* Amarillo */
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-title {
@@ -64,11 +67,14 @@
   font-size: 16px;
 }
 
-/* Estilos adicionales para resaltar el contenido */
-
-.game-card:hover {
-  background-color: #444;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+.buy-button {
+  background-color: yellow; /* Amarillo */
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: 10px;
 }

@@ -2,9 +2,9 @@
   <nav>
     <ul>
       <li><a [routerLink]="['/user', userId, 'home']" routerLinkActive="active">Home</a></li>
-      <li><a [routerLink]="['/user', userId, 'games']" routerLinkActive="active">Juegos</a></li>
-      <li><a [routerLink]="['/user', userId, 'Mygames']" routerLinkActive="active">Mis juegos</a></li>
-      <li><a [routerLink]="['/user', userId, 'info']" routerLinkActive="active">Usuario</a></li>
+      <li><a [routerLink]="['/user', userId, 'games',userId]" routerLinkActive="active">Juegos</a></li>
+      <li><a [routerLink]="['/user', userId, 'Mygames',userId]" routerLinkActive="active">Mis juegos</a></li>
+      <li><a [routerLink]="['/user', userId, 'Mycart',userId]" routerLinkActive="active">Cart</a></li>
     </ul>
   </nav>
 

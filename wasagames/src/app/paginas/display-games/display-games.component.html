@@ -7,9 +7,11 @@
       <h2 class="game-title">{{ game.nombre }}</h2>
       <div class="game-details-container">
         <h3 class="game-details"><strong>{{ game.desarrollador }}</strong></h3>
-        <h3 class="game-details"><strong>{{ game.genero }}</strong> </h3>
+        <h3 class="game-details"><strong>{{ game.genero }}</strong></h3>
         <p class="game-details"><strong>Plataforma:</strong> {{ game.plataforma }}</p>
         <p class="game-cantidad"><strong>Cantidad disponible:</strong> {{ game.cantidad }}</p>
       </div>
+      <button class="buy-button" (click)="comprarJuego(game.id)">Comprar</button>
+    </div>
   </div>
 </div>

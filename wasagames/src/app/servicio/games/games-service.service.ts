@@ -17,4 +17,18 @@ export class GameService {
     const url = `${this.baseUrl}/games/${id}`;
     return this.http.get<any>(url);
   }
+  addGames(data:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<any>(this.baseUrl + "/carrito/add-game", JSON.stringify(data), { headers: headers });
+  }
+  getCart(id:number): Observable<any> {
+    const url = `${this.baseUrl}/carrito/${id}/compra/false`;
+    return this.http.get<any>(url);
+  }
+  getMygames(id:number): Observable<any> {
+    const url = `${this.baseUrl}/carrito/${id}/compra/true`;
+    return this.http.get<any>(url);
+  }
 }
