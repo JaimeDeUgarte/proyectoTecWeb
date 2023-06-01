@@ -4,7 +4,7 @@ import { LoginComponent } from './paginas/login/login.component';
 import { SignupComponent } from './paginas/signup/signup.component';
 import { HomeComponent } from './paginas/home/home.component';
 import {DisplayUserComponent} from './paginas/display-user/display-user.component'
-
+import{DisplayGamesComponent}from './paginas/display-games/display-games.component'
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, // Ruta para el LoginComponent
   { path: 'signup', component: SignupComponent }, // Ruta para el SignupComponent
@@ -13,13 +13,17 @@ const routes: Routes = [
     component: DisplayUserComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         component: HomeComponent
+      },
+      {
+        path: 'games',
+        component: DisplayGamesComponent
       }
     ]
   },
-  { path: '', redirectTo: 'user/default-id', pathMatch: 'full' },
-  { path: '**', redirectTo: 'user/default-id' }
+  { path: '', redirectTo: 'user/default-id/home', pathMatch: 'full' },
+  { path: '**', redirectTo: 'user/default-id/home' }
 ];
 
 @NgModule({

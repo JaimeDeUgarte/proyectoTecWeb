@@ -12,13 +12,13 @@ export class UserService {
 
   // Método para obtener un usuario por su email y contraseña
   getUser(email: string, password: string): Observable<any> {
-    const url = `${this.baseUrl}/users?email=${email}&password=${password}`;
+    const url = `${this.baseUrl}/users/login/${email}/${password}`;
     return this.http.get<any>(url);
   }
 
   // Método para obtener un usuario por su email
   getmail(email: string): Observable<any> {
-    const url = `${this.baseUrl}/user-by-email?email=${email}}`;
+    const url = `${this.baseUrl}/users/find/${email}}`;
     return this.http.get<any>(url);
   }
 
@@ -33,7 +33,7 @@ export class UserService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(this.baseUrl + "/create", JSON.stringify(data), { headers: headers });
+    return this.http.post<any>(this.baseUrl + "/users", JSON.stringify(data), { headers: headers });
   }
 
   // Método para crear un nuevo usuario

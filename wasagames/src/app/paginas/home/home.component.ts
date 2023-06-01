@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   loadGames() {
-    const gameIds = [2, 5, 10, 8];
+    const gameIds = [7, 5, 10, 8];
     const gameRequests: Observable<any>[] = [];
 
     for (const id of gameIds) {

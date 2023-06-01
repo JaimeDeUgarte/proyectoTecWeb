@@ -1,36 +1,52 @@
 <div class="signup-container">
-    <!-- Encabezado del formulario -->
-    <h1>Registrarse</h1>
-    
-    <!-- Formulario de registro -->
-    <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
-      <!-- Campo de correo electrónico -->
-      <label>
-        Email:
-        <input type="text" formControlName="email">
-      </label>
-      
-      <!-- Campo de contraseña -->
-      <label>
-        Password:
-        <input type="password" id="password" formControlName="password" required>
-      </label>
-      
-      <!-- Contenedor para el botón de envío -->
-      <div class="submit-wrapper">
-        <!-- Botón de envío del formulario -->
-        <button [disabled]="isLoading || isSuccess" type="submit">
-          <!-- Texto del botón según el estado del formulario -->
-          <span *ngIf="!isLoading && !isSuccess">Enviar</span>
-          <span *ngIf="isLoading"><i class="fa fa-spinner fa-spin"></i></span>
-          <span *ngIf="isSuccess"><i class="fa fa-check"></i></span>
-        </button>
-        
-        <!-- Botón para ir a la página de inicio de sesión -->
-        <button *ngIf="showLoginButton" type="button" routerLink="/login" class="btn-style">Ir a Inicio de Sesión</button>
-
+  <div class="profile-section">
+    <div class="profile-pic">
+      <img src="{{ profilePic }}" alt="Profile Picture" />
+    </div>
+    <div class="profile-pic-options">
+      <div *ngFor="let option of profilePicOptions" (click)="changeProfilePic(option)">
+        <img src="{{ option }}" alt="Profile Picture Option" />
       </div>
-    </form>
+    </div>
   </div>
-  
-  
+
+  <!-- Encabezado del formulario -->
+  <h1>Registrarse</h1>
+
+  <!-- Formulario de registro -->
+  <form [formGroup]="miFormulario" (ngSubmit)="onSubmit()">
+    <!-- Campo de correo electrónico -->
+    <label>
+      Email:
+      <input type="text" formControlName="email">
+    </label>
+
+    <!-- Campo de contraseña -->
+    <label>
+      Password:
+      <input type="password" id="password" formControlName="password" required>
+    </label>
+
+    <!-- Campos adicionales del formulario -->
+    <h1>Registrar datos</h1>
+    <div class="form-group">
+      <label for="nombre_u">Nombre de usuario</label>
+      <input type="text" id="nombre_u" formControlName="nombre_u" required>
+    </div>
+    <div class="form-group">
+      <label for="nombre_com">Nombre completo</label>
+      <input type="text" id="nombre_com" formControlName="nombre_com" required>
+    </div>
+    <div class="form-group">
+      <label for="Fecha_N">Fecha de nacimiento</label>
+      <input type="date" id="Fecha_N" formControlName="Fecha_N" required>
+    </div>
+    <div class="form-group">
+      <label for="ci">CI</label>
+      <input type="text" id="ci" formControlName="ci" required>
+    </div>
+
+    <!-- Botón de envío -->
+    <button type="submit">Enviar</button>
+  </form>
+</div>

@@ -1,0 +1,15 @@
+<div class="games-container">
+  <div class="game-card" *ngFor="let game of games">
+    <div class="game-image-container">
+      <img class="game-image" [src]="game.foto" alt="Imagen del juego">
+    </div>
+    <div class="game-info">
+      <h2 class="game-title">{{ game.nombre }}</h2>
+      <div class="game-details-container">
+        <h3 class="game-details"><strong>{{ game.desarrollador }}</strong></h3>
+        <h3 class="game-details"><strong>{{ game.genero }}</strong> </h3>
+        <p class="game-details"><strong>Plataforma:</strong> {{ game.plataforma }}</p>
+        <p class="game-cantidad"><strong>Cantidad disponible:</strong> {{ game.cantidad }}</p>
+      </div>
+  </div>
+</div>

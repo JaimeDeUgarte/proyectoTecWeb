@@ -1,34 +1,127 @@
 /* Estilos para el contenedor principal del formulario de registro */
 .signup-container {
-    background-color: #0f49c7; /* Color de fondo del contenedor */
-    padding: 2rem; /* Espaciado interno del contenedor */
+    background-color: #40413f; /* Color de fondo del contenedor */
+    padding: 1rem; /* Espaciado interno del contenedor */
     border-radius: 0.5rem; /* Radio de borde del contenedor */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra del contenedor */
-    color: white; /* Color de texto dentro del contenedor */
+    color: rgb(207, 207, 207); /* Color de texto dentro del contenedor */
     text-align: center; /* Alineación de texto dentro del contenedor */
     font-family: 'Roboto', sans-serif; /* Fuente del texto dentro del contenedor */
   }
-  
+  .profile-section {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .profile-pic img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .profile-pic-options {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .profile-pic-options div {
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .profile-pic-options img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+
+@keyframes fa-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-container input {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.user-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #333;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.user-actions button {
+  background-color: #555;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.user-actions button:hover {
+  background-color: #777;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #181717;
+}
+
+form input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
   /* Estilos para el título del formulario de registro */
   .signup-container h1 {
     font-size: 2rem; /* Tamaño de fuente del título */
     margin-bottom: 2rem; /* Margen inferior del título */
   }
-  
+
   /* Estilos para el formulario de registro */
   .signup-container form {
     display: flex; /* Mostrar elementos en línea */
     flex-direction: column; /* Dirección de columna para los elementos */
     align-items: center; /* Alinear elementos al centro horizontalmente */
   }
-  
+
   /* Estilos para las etiquetas del formulario de registro */
   .signup-container label {
-    display: flex; /* Mostrar elementos en línea */
-    flex-direction: column; /* Dirección de columna para los elementos */
-    margin-bottom: 1rem; /* Margen inferior de las etiquetas */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    color: #000; /* Cambio de color a negro */
+    font-family: 'Roboto', sans-serif; /* Cambio de fuente a Roboto */
   }
-  
+
   /* Estilos para los campos de texto del formulario de registro */
   .signup-container input[type="text"],
   .signup-container input[type="password"] {
@@ -39,29 +132,30 @@
     margin-bottom: 1rem; /* Margen inferior de los campos de texto */
     font-size: 1rem; /* Tamaño de fuente de los campos de texto */
   }
-  
+
   /* Estilos para el botón de envío del formulario de registro */
-  .signup-container button[type="submit"] {
-    background-color: white; /* Color de fondo del botón */
-    color: #0f49c7; /* Color de texto del botón */
-    font-size: 1.2rem; /* Tamaño de fuente del botón */
-    padding: 0.7em 2em; /* Espaciado interno del botón */
-    border: 3px solid white; /* Borde del botón */
-    border-radius: 2px; /* Radio de borde del botón */
-    position: relative; /* Posición del botón */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra del botón */
-    transition: 0.3s ease all; /* Transición de propiedades del botón */
-    z-index: 1; /* Índice de apilamiento del botón */
-    cursor: pointer; /* Cursor del botón */
-    margin-top: 1rem; /* Margen superior del botón */
-    text-transform: uppercase; /* Transformación de texto a mayúsculas */
-  }
-  
+  /* Estilos para el botón de envío del formulario de registro */
+.signup-container button[type="submit"] {
+  background-color: white;
+  color: #0e1118;
+  font-size: 1.2rem;
+  padding: 0.7em 2em;
+  border: 3px solid white;
+  border-radius: 10px; /* Cambio del radio de borde a 10px */
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease all;
+  z-index: 1;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-transform: uppercase;
+}
+
   .signup-container button[type="submit"]:hover {
-    background-color: #0f49c7; /* Color de fondo del botón al pasar el cursor */
+    background-color: #101218; /* Color de fondo del botón al pasar el cursor */
     color: white; /* Color de texto del botón al pasar el cursor */
   }
-  
+
   .signup-container button[type="submit"]:before {
     transition: 0.5s all ease; /* Transición de propiedades del elemento antes del botón */
     position: absolute; /* Posición del elemento antes del botón */
@@ -71,26 +165,26 @@
     bottom: 0; /* Posición inferior del elemento antes del botón */
     opacity: 0; /* Opacidad del elemento antes del botón */
     content: ''; /* Contenido del elemento antes del botón */
-    background-color: rgb(18, 32, 221); /* Color de fondo del elemento antes del botón */
+    background-color: rgb(20, 20, 20); /* Color de fondo del elemento antes del botón */
     z-index: -1; /* Índice de apilamiento del elemento antes del botón */
   }
-  
+
   .signup-container button[type="submit"]:hover:before {
     transition: 0.5s all ease; /* Transición de propiedades del elemento antes del botón al pasar el cursor */
     left: 0; /* Posición izquierda del elemento antes del botón al pasar el cursor */
     right: 0; /* Posición derecha del elemento antes del botón al pasar el cursor */
     opacity: 1; /* Opacidad del elemento antes del botón al pasar el cursor */
   }
-  
+
   /* Estilos para el contenedor del botón */
   .submit-wrapper {
     position: relative; /* Posición del contenedor del botón */
   }
-  
+
   .submit-wrapper button {
     position: relative; /* Posición del botón */
   }
-  
+
   .submit-wrapper button:after {
     content: ''; /* Contenido del elemento después del botón */
     position: absolute; /* Posición del elemento después del botón */
@@ -106,9 +200,9 @@
     opacity: 0; /* Opacidad del elemento después del botón */
     z-index: 2; /* Índice de apilamiento del elemento después del botón */
   }
-  
+
   .submit-wrapper button.check:after {
-    content: '\f00c'; /* Código del ícono de check */ 
+    content: '\f00c'; /* Código del ícono de check */
     font-family: 'Font Awesome 5 Free'; /* Fuente del ícono de check */
     font-weight: 900; /* Peso de fuente del ícono de check */
     font-size: 20px; /* Tamaño de fuente del ícono de check */
@@ -117,7 +211,7 @@
     color: #fff; /* Color de texto del ícono de check */
     animation: none; /* Animación del ícono de check */
   }
-  
+
   /* Animación para el ícono de carga */
   @keyframes spin {
     0% {
@@ -127,7 +221,7 @@
       transform: translate(-50%, -50%) rotate(360deg); /* Transformación final del ícono de carga */
     }
   }
-  
+
   /* Estilos para el botón de estilo */
   .btn-style {
     cursor: pointer; /* Cursor del botón de estilo */
@@ -138,16 +232,16 @@
     text-align: center; /* Alineación de texto del botón de estilo */
     font-weight: bold; /* Peso de fuente del botón de estilo */
     padding: 0.7em 2em; /* Espaciado interno del botón de estilo */
-    border: 3px solid #ff6600; /* Borde del botón de estilo */
+    border: 3px solid #222121; /* Borde del botón de estilo */
     border-radius: 2px; /* Radio de borde del botón de estilo */
     position: relative; /* Posición del botón de estilo */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1); /* Sombra del botón de estilo */
-    color: #ff6600; /* Color de texto del botón de estilo */
+    color: #6b4d38; /* Color de texto del botón de estilo */
     text-decoration: none; /* Decoración de texto del botón de estilo */
     transition: 0.3s ease all; /* Transición de propiedades del botón de estilo */
     z-index: 1; /* Índice de apilamiento del botón de estilo */
   }
-  
+
   .btn-style:before {
     transition: 0.5s all ease; /* Transición de propiedades del elemento antes del botón de estilo */
     position: absolute; /* Posición del elemento antes del botón de estilo */
@@ -160,40 +254,39 @@
     background-color: #ff6600; /* Color de fondo del elemento antes del botón de estilo */
     z-index: -1; /* Índice de apilamiento del elemento antes del botón de estilo */
   }
-  
+
   .btn-style:hover, .btn-style:focus {
     color: white; /* Color de texto del botón de estilo al pasar el cursor o enfocar */
   }
-  
+
   .btn-style:hover:before, .btn-style:focus:before {
     transition: 0.5s all ease; /* Transición de propiedades del elemento antes del botón de estilo al pasar el cursor o enfocar */
     left: 0; /* Posición izquierda del elemento antes del botón de estilo al pasar el cursor o enfocar */
     right: 0; /* Posición derecha del elemento antes del botón de estilo al pasar el cursor o enfocar */
     opacity: 1; /* Opacidad del elemento antes del botón de estilo al pasar el cursor o enfocar */
   }
-  
+
   .btn-style:active {
     transform: translateY(1px); /* Transformación del botón de estilo al presionar */
   }
-  
+
   .btn-style.secondary {
     color: #ff6600; /* Color de texto secundario del botón de estilo */
     border-color: #ff6600; /* Color de borde secundario del botón de estilo */
   }
-  
+
   .btn-style.secondary:before {
     background-color: white; /* Color de fondo secundario del elemento antes del botón de estilo */
   }
-  
+
   .btn-style.secondary:hover, .btn-style.secondary:focus {
     color: white; /* Color de texto secundario del botón de estilo al pasar el cursor o enfocar */
   }
-  
+
   .btn-style.secondary:hover:before, .btn-style.secondary:focus:before {
     transition: 0.5s all ease; /* Transición de propiedades del elemento antes del botón de estilo secundario al pasar el cursor o enfocar */
     left: 0; /* Posición izquierda del elemento antes del botón de estilo secundario al pasar el cursor o enfocar */
     right: 0; /* Posición derecha del elemento antes del botón de estilo secundario al pasar el cursor o enfocar */
     opacity: 1; /* Opacidad del elemento antes del botón de estilo secundario al pasar el cursor o enfocar */
   }
-  
-  
+

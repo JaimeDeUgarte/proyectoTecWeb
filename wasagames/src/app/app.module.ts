@@ -13,6 +13,7 @@ import { CreateGamesComponent } from './paginas/create-games/create-games.compon
 import { UserGamesComponent } from './paginas/user-games/user-games.component';
 import { CarritoComponent } from './paginas/carrito/carrito.component';
 import { DisplayUserComponent } from './paginas/display-user/display-user.component';
+import { DisplayGamesComponent } from './paginas/display-games/display-games.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DisplayUserComponent } from './paginas/display-user/display-user.compon
     CreateGamesComponent,
     UserGamesComponent,
     CarritoComponent,
-    DisplayUserComponent
+    DisplayUserComponent,
+    DisplayGamesComponent
   ],
   imports: [
     BrowserModule,
