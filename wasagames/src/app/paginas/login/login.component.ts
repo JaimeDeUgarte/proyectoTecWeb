@@ -19,18 +19,54 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   onSubmit() {
-    const email = this.loginForm.get('email')?.value; // Obtener el valor del campo de email
-    const password = this.loginForm.get('password')?.value; // Obtener el valor del campo de contraseña
+    const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
 
-    // Llamar al método del servicio para obtener el usuario
-    this.userService.getUser(email, password).subscribe(
+    this.userService.loginUser(email, password).subscribe(
       (response: any) => {
-        this.datosUser = response; // Asignar los datos del usuario obtenidos de la respuesta
+        this.datosUser = response.user;
+        const token = response.token;
+
         console.log(this.datosUser);
 
-        // Verificar si se obtuvo un usuario válido
-        if (this.datosUser ) {
-          this.router.navigate(['/user', this.datosUser.id,'/home']);
+        if (this.datosUser) {
+          // Verificar si el usuario tiene un carrito existente
+          this.userService.getCart(this.datosUser.id).subscribe(
+            (cartResponse: any) => {
+              if (cartResponse) {
+                this.router.navigate(['/user', this.datosUser.id, 'home',this.datosUser.id]);
+              } else {
+                // Crear un nuevo carrito
+                const cartData = {
+                  userId: this.datosUser.id
+                };
+
+                this.userService.createCart(cartData).subscribe(
+                  (createCartResponse: any) => {
+                    // Actualizar la información del usuario con el carritoId
+                    const userData = {
+                      carritoId: this.datosUser.id
+                    };
+
+                    this.userService.updateUserInfo(this.datosUser.id, userData).subscribe(
+                      (updateUserResponse: any) => {
+                        this.router.navigate(['/user', this.datosUser.id, 'home']);
+                      },
+                      (updateUserError: any) => {
+                        console.error(updateUserError);
+                      }
+                    );
+                  },
+                  (createCartError: any) => {
+                    console.error(createCartError);
+                  }
+                );
+              }
+            },
+            (cartError: any) => {
+              console.error(cartError);
+            }
+          );
         }
       },
       (error) => {

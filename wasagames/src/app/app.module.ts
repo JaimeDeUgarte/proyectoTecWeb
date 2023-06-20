@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms'; // Importa el ReactiveFormsModule aquí
+import { ReactiveFormsModule } from '@angular/forms';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt'; // Importa el JwtModule aquí
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,9 +33,25 @@ import { DisplayGamesComponent } from './paginas/display-games/display-games.com
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule // Agrega el ReactiveFormsModule aquí
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+export function jwtOptionsFactory() {
+  return {
+    tokenGetter: () => {
+      return localStorage.getItem('token');
+    },
+    allowedDomains: ['http://localhost:4200'],
+    disallowedRoutes: [],
+  };
+}

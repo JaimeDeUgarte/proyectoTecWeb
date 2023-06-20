@@ -1,17 +1,17 @@
+<!-- Sección de bienvenida -->
+<div class="welcome-section">
+  <h2>Bienvenido a WasaGames, {{ nombreUsuario }}!!!</h2>
+  <img class="profile-picture" [src]="profilePic" alt="Foto de perfil">
+  <p>Encuentra tus juegos favoritos. ¡Pasa a la sección de juegos para descubrir lo mejor!</p>
+</div>
 
-  <!-- Sección de bienvenida -->
-  <div class="welcome-section">
-    <h1>Bienvenido a WasaGames!!!</h1>
-    <p>Encuentra tus juegos favoritos. ¡Pasa a la sección de juegos para descubrir lo mejor!</p>
-  </div>
-
-  <!-- Carrusel de imágenes -->
-  <div class="carousel">
-    <div class="slide" *ngFor="let game of games">
-      <img [src]="game.foto" [alt]="'Imagen ' + game.id">
-      <div class="image-overlay">
-        <h3>{{ game.nombre }}</h3>
-        <p>{{ game.genero }}, {{ game.plataforma }}</p>
-      </div>
+<!-- Carrusel de imágenes -->
+<div class="carousel">
+  <div class="slide" *ngFor="let game of games">
+    <img [src]="game.foto" [alt]="'Imagen ' + game.id">
+    <div class="image-overlay">
+      <h3>{{ game.nombre }}</h3>
+      <p>{{ game.genero }}, {{ game.plataforma }}</p>
     </div>
   </div>
+</div>

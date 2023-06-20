@@ -11,11 +11,10 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   // Método para obtener un usuario por su email y contraseña
-  getUser(email: string, password: string): Observable<any> {
-    const url = `${this.baseUrl}/users/login/${email}/${password}`;
-    return this.http.get<any>(url);
+  loginUser(email: string, password: string): Observable<any> {
+    const url = `${this.baseUrl}/users/login`;
+    return this.http.post<any>(url, { email, password });
   }
-
   // Método para obtener un usuario por su email
   getmail(email: string): Observable<any> {
     const url = `${this.baseUrl}/users/find/${email}}`;
@@ -24,7 +23,7 @@ export class UserService {
 
   // Método para obtener información de un usuario por su ID
   getinfous(id: string): Observable<any> {
-    const url = `${this.baseUrl}/usersget?idu=${id}`;
+    const url = `${this.baseUrl}/infoUsers/${id}`;
     return this.http.get<any>(url);
   }
 
@@ -56,12 +55,6 @@ export class UserService {
     return this.http.delete<any>(url);
   }
 
-  // Método para actualizar un usuario
-  updateUser(user_id: string, data: any): Observable<any> {
-    const url = `${this.baseUrl}/usersUpdate?id=${user_id}`;
-    return this.http.put<any>(url, data);
-  }
-
   // Método para obtener usuarios por su rol
   getUserByRole(role: string): Observable<any> {
     const url = `${this.baseUrl}/usersr?role=${role}`;
@@ -76,10 +69,7 @@ export class UserService {
   }
 
   // Método para obtener los juegos de un usuario, falta crear v:
-  getTicket_user(userID: string): Observable<any> {
-    const url = `${this.baseUrl}/Ticket_user?userID=${userID}`;
-    return this.http.get<any>(url);
-  }
+
 
   // Método para obtener la información de un usuario
   getUserinfo(userID: string): Observable<any> {
@@ -89,8 +79,13 @@ export class UserService {
 
   // Método para actualizar la información de un usuario
   updateUserInfo(userID: string, userData: any): Observable<any> {
-    const url = `${this.baseUrl}/Userinfo?userID=${userID}`;
+    const url = `${this.baseUrl}/users/${userID}`;
     return this.http.put<any>(url, userData);
+  }
+
+  getCart(ID: string): Observable<any> {
+    const url = `${this.baseUrl}/carrito/${ID}`;
+    return this.http.get<any>(url);
   }
 
   // Método para crear un nuevo carrito
@@ -98,8 +93,9 @@ export class UserService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(this.baseUrl + "/Cart", JSON.stringify(data), { headers: headers });
+    return this.http.post<any>(this.baseUrl + "/carrito", JSON.stringify(data), { headers: headers });
   }
+
 
   // Método para eliminar el carrito de un usuario
   deleteCart(userID:string): Observable<any> {

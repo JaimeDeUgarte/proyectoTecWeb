@@ -27,8 +27,10 @@ export class UserGamesComponent {
   getCart(): void {
     this.gameService.getMygames(this.userId).subscribe(
       (response: any) => {
-        this.gameIds = response.map((game: any) => game.gameId); // Obtener los gameId del carrito
-        this.loadGames(); // Cargar los juegos correspondientes a los gameId
+        if (response !== null) {
+          this.gameIds = response.map((game: any) => game.gameId); // Obtener los gameId del carrito
+          this.loadGames(); // Cargar los juegos correspondientes a los gameId
+        }
       },
       (error: any) => {
         console.error(error);

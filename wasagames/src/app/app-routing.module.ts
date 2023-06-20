@@ -15,7 +15,7 @@ const routes: Routes = [
     component: DisplayUserComponent,
     children: [
       {
-        path: 'home',
+        path: 'home/:id',
         component: HomeComponent
       },
       {
@@ -37,9 +37,7 @@ const routes: Routes = [
 
       }
     ]
-  },
-  { path: '', redirectTo: 'user/default-id/home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'user/default-id/home' }
+  }
 ];
 
 @NgModule({

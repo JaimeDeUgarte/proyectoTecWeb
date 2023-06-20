@@ -1,4 +1,3 @@
-
 /* Estilos para la sección de bienvenida */
 .welcome-section {
   text-align: center;
@@ -21,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap; /* Agregamos envoltura flexible para dispositivos móviles */
 }
 
 .slide {
@@ -85,4 +85,25 @@
   .welcome-section p {
     font-size: 16px;
   }
+
+  .carousel .slide {
+    max-width: 100%; /* Hacemos que el carrusel ocupe el ancho completo */
+    margin-bottom: 20px; /* Añadimos espacio inferior entre las diapositivas */
+  }
 }
+h2 {
+  color: #FFFF00;
+  text-shadow: 0 0 5px #f4d03f,
+               0 0 25px #f4d03f,
+               0 0 50px #f4d03f,
+               0 0 100px #f4d03f;
+  font-size: 2em; /* Ajusta el tamaño según tus preferencias */
+}
+.profile-picture {
+  width: 100px; /* Ajusta el tamaño según tus necesidades */
+  height: 100px; /* Ajusta el tamaño según tus necesidades */
+  border-radius: 50%; /* Para que la imagen tenga forma circular */
+  object-fit: cover; /* Ajusta la imagen para que ocupe todo el espacio del contenedor */
+}
+
+

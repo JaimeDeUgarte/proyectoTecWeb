@@ -28,8 +28,10 @@ export class CarritoComponent implements OnInit {
   getCart(): void {
     this.gameService.getCart(this.userId).subscribe(
       (response: any) => {
-        this.gameIds = response.map((game: any) => game.gameId); // Obtener los gameId del carrito
-        this.loadGames(); // Cargar los juegos correspondientes a los gameId
+        if (response !== null) {
+          this.gameIds = response.map((game: any) => game.gameId); // Obtener los gameId del carrito
+          this.loadGames(); // Cargar los juegos correspondientes a los gameId
+        }
       },
       (error: any) => {
         console.error(error);
@@ -53,4 +55,45 @@ export class CarritoComponent implements OnInit {
       }
     );
   }
+
+  comprar(): void {
+    const userData = {
+      carritoId: this.userId,
+      compra: true
+    };
+
+    this.gameService.updateGameInfo(userData).subscribe(
+      (response: any) => {
+        // Realiza las acciones necesarias en caso de éxito
+        console.log('Compra realizada:', response);
+        alert('Tu compra fue realizada!');
+        window.location.reload();
+      },
+      (error: any) => {
+        console.error('Error al realizar la compra:', error);
+      }
+    );
+  }
+  eliminarJuego(gameId: number): void {
+    if (this.userId !== null) {
+      const carritoId = this.userId;
+
+      this.gameService.deleteGame(carritoId.toString(), gameId.toString()).subscribe(
+        (response: any) => {
+          // Realiza las acciones necesarias en caso de éxito
+          console.log('Juego eliminado del carrito:', response);
+          alert('Juego Removido del carrito');
+          window.location.reload();
+          // Actualizar la lista de juegos eliminando el juego correspondiente
+          this.games = this.games.filter((game: any) => game.gameId !== gameId);
+        },
+        (error: any) => {
+          console.error('Error al eliminar el juego del carrito:', error);
+        }
+      );
+    } else {
+      console.error('carritoId es null');
+    }
+  }
+
 }

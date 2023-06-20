@@ -1,3 +1,4 @@
+/* Estilos para la sección de juegos */
 .games-container {
   max-width: 800px;
   margin: 0 auto;
@@ -8,8 +9,7 @@
 
 .game-card {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
   background-color: #333;
   margin-bottom: 10px;
   padding: 10px;
@@ -18,13 +18,16 @@
 }
 
 .game-image-container {
-  border-radius: 10px; /* Ajusta el valor según tus preferencias */
+  border-radius: 10px;
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: 10px;
 }
 
 .game-image {
-  width: 200px; /* Ajusta el valor según tus preferencias */
-  height: 150px; /* Ajusta el valor según tus preferencias */
-  border-radius: 10px; /* Ajusta el valor según tus preferencias */
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -35,10 +38,11 @@
 }
 
 .game-info {
-  color: #FFD700; /* Amarillo */
+  color: #FFD700;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .game-title {
@@ -68,13 +72,121 @@
 }
 
 .buy-button {
-  background-color: yellow; /* Amarillo */
-  color: black;
-  border: none;
-  padding: 8px 16px;
-  font-size: 16px;
-  border-radius: 5px;
+  position: relative;
+  padding: 1em 1.8em;
+  outline: none;
+  border: 1px solid #303030;
+  background: #212121;
+  color: #fffb00;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;
+  overflow: hidden;
+  transition: 0.2s;
+  border-radius: 20px;
   cursor: pointer;
-  align-self: flex-start;
-  margin-top: 10px;
+  font-weight: bold;
+ }
+
+ .buy-button:hover {
+  box-shadow: 0 0 10px #fffb00, 0 0 25px #ff9100, 0 0 50px #fffb00;
+  transition-delay: 0.6s;
+ }
+
+ .buy-button span {
+  position: absolute;
+ }
+
+ .buy-button span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fffb00);
+ }
+
+ .buy-button:hover span:nth-child(1) {
+  left: 100%;
+  transition: 0.7s;
+ }
+
+ .buy-button span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff9100);
+ }
+
+ .buy-button:hover span:nth-child(3) {
+  right: 100%;
+  transition: 0.7s;
+  transition-delay: 0.35s;
+ }
+
+ .buy-button span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #fffb00);
+ }
+
+ .buy-button:hover span:nth-child(2) {
+  top: 100%;
+  transition: 0.7s;
+  transition-delay: 0.17s;
+ }
+
+ .buy-button span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #ff9100);
+ }
+
+ .buy-button:hover span:nth-child(4) {
+  bottom: 100%;
+  transition: 0.7s;
+  transition-delay: 0.52s;
+ }
+
+ .buy-button:active {
+  background: #fffb00;
+  background: linear-gradient(to top right, #fffb00, #ff9100);
+  color: #bfbfbf;
+  box-shadow: 0 0 8px #fffb00, 0 0 8px #ff9100, 0 0 8px #fffb00;
+  transition: 0.1s;
+ }
+
+ .buy-button:active span:nth-child(1)
+ span:nth-child(2)
+ span:nth-child(2)
+ span:nth-child(2) {
+  transition: none;
+  transition-delay: none;
+ }
+
+
+/* Estilos para pantallas pequeñas (hasta 768px de ancho) */
+@media (max-width: 768px) {
+  .game-card {
+    padding: 5px;
+  }
+
+  .game-image-container {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .game-info {
+    margin-top: 10px;
+  }
+
+  .button {
+    align-self: flex-start;
+    margin-top: 10px;
+    margin-left: 0;
+  }
 }

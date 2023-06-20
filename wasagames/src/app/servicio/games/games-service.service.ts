@@ -31,4 +31,13 @@ export class GameService {
     const url = `${this.baseUrl}/carrito/${id}/compra/true`;
     return this.http.get<any>(url);
   }
+  updateGameInfo(userData: any): Observable<any> {
+    const url = `${this.baseUrl}/carrito/update`;
+    return this.http.put<any>(url, userData);
+  }
+
+  deleteGame(id: string,gameId:string): Observable<any> {
+    const url = `${this.baseUrl}/carrito/${id}/${gameId}`;
+    return this.http.delete<any>(url);
+  }
 }

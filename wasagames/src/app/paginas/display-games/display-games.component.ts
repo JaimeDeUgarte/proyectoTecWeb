@@ -54,5 +54,4 @@ export class DisplayGamesComponent implements OnInit {
   }
 
 
-
 }
