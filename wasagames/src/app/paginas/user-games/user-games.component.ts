@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../servicio/games/games-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin, Observable } from 'rxjs';
+import { UserService } from '../../servicio/users/user-service.service';
+
 @Component({
   selector: 'app-user-games',
   templateUrl: './user-games.component.html',
@@ -9,18 +11,26 @@ import { forkJoin, Observable } from 'rxjs';
 })
 export class UserGamesComponent {
   userId: number;
+  nombreUsuario!: string;
   gameIds: number[] = [];
   games: any[] = [];
 
-  constructor(private gameService: GameService, private route: ActivatedRoute) {
+  constructor(private gameService: GameService, private route: ActivatedRoute,private userInfoService: UserService) {
     this.userId = 0; // Asignar un valor predeterminado
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params['id'] as number; // Aserción de tipo
-      console.log('userId:', this.userId);
       this.getCart();
+      this.userInfoService.getinfous(this.userId.toString()).subscribe(
+        (response: any) => {
+          this.nombreUsuario = response.nombre_u;
+        },
+        (error: any) => {
+          console.error('Error al obtener la información del usuario:', error);
+        }
+      );
     });
   }
 

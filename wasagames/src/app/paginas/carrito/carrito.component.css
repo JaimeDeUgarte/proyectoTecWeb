@@ -288,4 +288,11 @@ button:hover {
   transform: translateY(30px);
   transition-duration: .3s;
 }
-
+h1 {
+  color: #ffff00;
+  text-shadow: 0 0 5px #c0a123,
+               0 0 25px #c0a123,
+               0 0 50px #c0a123,
+               0 0 100px #c0a123;
+  font-size: 2em; /* Ajusta el tamaño según tus preferencias */
+}

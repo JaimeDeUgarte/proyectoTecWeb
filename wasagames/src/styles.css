@@ -2,3 +2,23 @@
 html {
   background-color: #111;
 }
+/* Estilo para la scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la scrollbar */
+}
+
+/* Estilo para el track de la scrollbar (fondo) */
+::-webkit-scrollbar-track {
+  background-color: #0e0d0d;
+}
+
+/* Estilo para el thumb de la scrollbar (barra deslizadora) */
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px; /* Radio de borde del thumb */
+}
+
+/* Estilo para el thumb de la scrollbar cuando está en hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
