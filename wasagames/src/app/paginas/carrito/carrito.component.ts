@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../servicio/games/games-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
+import { AuthSetatusService } from '../../auth-setatus.service';
 import { forkJoin, Observable } from 'rxjs';
 
 @Component({
@@ -13,13 +14,17 @@ export class CarritoComponent implements OnInit {
   gameIds: number[] = [];
   games: any[] = [];
 
-  constructor(private gameService: GameService, private route: ActivatedRoute) {
+  constructor(private gameService: GameService, private route: ActivatedRoute,private router: Router,private authStatusService: AuthSetatusService) {
     this.userId = 0; // Asignar un valor predeterminado
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      this.userId = params['id'] as number; // Aserción de tipo
+      this.userId = params['id'] as number;
+      if(this.authStatusService.getLoggedIn() !==this.userId.toString())
+      {
+        this.router.navigate(['/login']);
+      } // Aserción de tipo
       console.log('userId:', this.userId);
       this.getCart();
     });

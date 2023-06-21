@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../../servicio/users/user-service.service';
 import { Router } from '@angular/router';
+import { AuthSetatusService } from '../../auth-setatus.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
     password: new FormControl('') // Campo de formulario para la contraseña
   });
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router,private authStatusService: AuthSetatusService) {}
 
   onSubmit() {
     const email = this.loginForm.get('email')?.value;
@@ -24,33 +25,36 @@ export class LoginComponent {
 
     this.userService.loginUser(email, password).subscribe(
       (response: any) => {
-        this.datosUser = response.user;
         const token = response.token;
+        const tokenPayload = token.split('.')[1]; // Obtener la parte del payload del token
+        const payload = JSON.parse(atob(tokenPayload)); // Decodificar y parsear el payload
+        const id = payload.id;
 
-        console.log(this.datosUser);
-
-        if (this.datosUser) {
+        console.log(id);
+        if (id) {
           // Verificar si el usuario tiene un carrito existente
-          this.userService.getCart(this.datosUser.id).subscribe(
+          this.userService.getCart(id).subscribe(
             (cartResponse: any) => {
               if (cartResponse) {
-                this.router.navigate(['/user', this.datosUser.id, 'home',this.datosUser.id]);
+                this.authStatusService.setLoggedIn(id.toString());
+                this.router.navigate(['/user', id, 'home',id]);
               } else {
                 // Crear un nuevo carrito
                 const cartData = {
-                  userId: this.datosUser.id
+                  userId: id
                 };
 
                 this.userService.createCart(cartData).subscribe(
                   (createCartResponse: any) => {
                     // Actualizar la información del usuario con el carritoId
                     const userData = {
-                      carritoId: this.datosUser.id
+                      carritoId: id
                     };
 
-                    this.userService.updateUserInfo(this.datosUser.id, userData).subscribe(
+                    this.userService.updateUserInfo(id, userData).subscribe(
                       (updateUserResponse: any) => {
-                        this.router.navigate(['/user', this.datosUser.id, 'home']);
+                        this.authStatusService.setLoggedIn(id.toString());
+                        this.router.navigate(['/user', id, 'home',id]);
                       },
                       (updateUserError: any) => {
                         console.error(updateUserError);

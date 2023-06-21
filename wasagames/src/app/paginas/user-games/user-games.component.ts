@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../../servicio/games/games-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
+import { AuthSetatusService } from '../../auth-setatus.service';
 import { forkJoin, Observable } from 'rxjs';
 import { UserService } from '../../servicio/users/user-service.service';
 
@@ -15,13 +16,17 @@ export class UserGamesComponent {
   gameIds: number[] = [];
   games: any[] = [];
 
-  constructor(private gameService: GameService, private route: ActivatedRoute,private userInfoService: UserService) {
+  constructor(private gameService: GameService, private route: ActivatedRoute,private userInfoService: UserService,private router: Router,private authStatusService: AuthSetatusService) {
     this.userId = 0; // Asignar un valor predeterminado
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.userId = params['id'] as number; // Aserción de tipo
+      if(this.authStatusService.getLoggedIn() !==this.userId.toString())
+      {
+        this.router.navigate(['/login']);
+      }
       this.getCart();
       this.userInfoService.getinfous(this.userId.toString()).subscribe(
         (response: any) => {

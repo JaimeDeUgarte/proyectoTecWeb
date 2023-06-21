@@ -3,6 +3,7 @@ import { GameService } from '../../servicio/games/games-service.service';
 import { UserService } from '../../servicio/users/user-service.service';
 import { Observable, forkJoin } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthSetatusService } from '../../auth-setatus.service';
 
 @Component({
   selector: 'app-home',
@@ -14,14 +15,17 @@ export class HomeComponent implements OnInit {
   userId?: string;
   nombreUsuario!: string;
   profilePic!: string;
-  constructor(private userService: GameService,private userInfoService: UserService,private route: ActivatedRoute) { }
+  constructor(private userService: GameService,private userInfoService: UserService,private router: Router,private route: ActivatedRoute,private authStatusService: AuthSetatusService) { }
 
   ngOnInit() {
-    this.loadGames();
 
     // Obtener el ID del usuario de la URL
     this.route.params.subscribe(params => {
       this.userId = params['id']; // Obten el ID del usuario de la URL
+      if(this.authStatusService.getLoggedIn() !==this.userId)
+      {
+        this.router.navigate(['/login']);
+      }
       console.log('id:',this.userId);
       if (this.userId) { // Verifica si el ID del usuario tiene un valor asignado
         this.userInfoService.getinfous(this.userId).subscribe(
@@ -35,6 +39,7 @@ export class HomeComponent implements OnInit {
         );
       }
     });
+    this.loadGames();
   }
 
 
